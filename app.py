@@ -25,6 +25,8 @@ def diabetesPrediction():
 
     X_pred = [[inputQuery1, inputQuery2, inputQuery3, inputQuery4, inputQuery5, inputQuery6, inputQuery7, inputQuery8]]
 
+    X_pred = pd.DataFrame(X_pred, columns=['Pregnancies', 'Glucose', 'BloodPressure','SkinThickness','Insulin','BMI','DiabetesPedigreeFunction','Age'])
+
     savename = "model.sav"
 
     load_model = pickle.load(open(savename, "rb"))
