@@ -17,7 +17,7 @@
             <div class="container"><a class="navbar-brand" href="index.html">Sabyasachi's Diabetes Predictor</a></div>
         </nav>
         <h1 class="display-4 text-center text-white">Are You Diabetic?</h1>
-    <form action="http://localhost:5000" method="POST">
+    <form action="{{ url_for('diabetesPrediction')}}" method="POST">
         <div class="input-group text-center"><span class="text-center text-dark input-group-text">Pregnancies</span><input name="query1" id='query1' required class="form-control" type="number" min="0" max="10" step="1" placeholder="Enter the Number of Pregnancies" style="text-align: center;"></div>
         <div class="input-group"><span class="input-group-text">Glucose</span><input name="query2" id='query2' required class="form-control" type="text" placeholder="Enter the Glucose Concentration in mm/dl" inputmode="numeric" style="text-align: center;"></div>
         <div class="input-group"><span class="input-group-text">Blood Pressure</span><input name="query3" id='query3' required class="form-control" type="text" placeholder="Enter the Blood Pressure in mm/Hg" inputmode="numeric" style="text-align: center;"></div>
