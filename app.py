@@ -31,11 +31,11 @@ def diabetesPrediction():
 
     predicted = load_model.predict(X_pred)
 
-    #probability = load_model.predict_proba(X_pred)[:,1][0]*100
+    probability = load_model.predict_proba(X_pred)[:,1][0]*100
 
     if predicted==1:
         output = "The patient is diagnosed with Diabetes"
-        output1 = "Confidence: {}"#.format(probability)
+        output1 = "Confidence: {}".format(probability)
     else:
         output = "The patient is not diagnosed with Diabetes"
         output1 = ""
