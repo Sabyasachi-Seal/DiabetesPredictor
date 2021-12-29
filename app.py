@@ -23,21 +23,19 @@ def diabetesPrediction():
     inputQuery7 = request.form['query7']
     inputQuery8 = request.form['query8']
 
-    inputted = [[inputQuery1, inputQuery2, inputQuery3, inputQuery4, inputQuery5, inputQuery6, inputQuery7, inputQuery8]]
-
-    X_pred = pd.DataFrame(inputted, columns=['Pregnancies', 'Glucose', 'BloodPressure','SkinThickness','Insulin','BMI','DiabetesPedigreeFunction','Age'])
+    X_pred = [[inputQuery1, inputQuery2, inputQuery3, inputQuery4, inputQuery5, inputQuery6, inputQuery7, inputQuery8]]
 
     savename = "model.sav"
 
     load_model = pickle.load(open(savename, "rb"))
 
-    single = load_model.predict(X_pred)[0]
+    predicted = load_model.predict(X_pred)
 
-    probability = load_model.predict_proba(X_pred)[:,1][0]*100
+    #probability = load_model.predict_proba(X_pred)[:,1][0]*100
 
-    if single==1:
+    if predicted==1:
         output = "The patient is diagnosed with Diabetes"
-        output1 = "Confidence: {}".format(probability)
+        output1 = "Confidence: {}"#.format(probability)
     else:
         output = "The patient is not diagnosed with Diabetes"
         output1 = ""
