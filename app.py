@@ -40,7 +40,7 @@ def diabetesPrediction():
         output1 = "Confidence: {}".format(probability)
     else:
         output = "The patient is not diagnosed with Diabetes"
-        output1 = ""
+        output1 = "Confidence: {}".format(100-probability)
     
     return render_template('index.html', output1=output, output2=output1, query1 = request.form['query1'], query2 = request.form['query2'],query3 = request.form['query3'],query4 = request.form['query4'],query5 = request.form['query5'],query6 = request.form['query6'],query7 = request.form['query7'],query8 = request.form['query8'])
     

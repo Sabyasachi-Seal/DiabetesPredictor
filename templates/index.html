@@ -1,62 +1,45 @@
-<html>
-<head>
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-</head>
-   <body>
-      <title>Diabetes Prediction</title>
-	  <div class="container">
-		<div class="row">
+<!DOCTYPE html>
+<html lang="en">
 
-		  <form action="http://localhost:5000" method="POST">
-		  	<div class="col-sm-9">
-			 <div class="form-group  purple-border">
-				  <label for="comment">Pregnancies</label>
-				  <textarea class="form-control" rows="2" id="query1" name="query1" rows="2" cols="8" autofocus>{{query1}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Glucose</label>
-				  <textarea class="form-control" rows="2" id="query2" name="query2" rows="2" cols="8" autofocus>{{query2}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">BloodPressure</label>
-				  <textarea class="form-control" rows="2" id="query3" name="query3" rows="2" cols="8" autofocus>{{query3}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">SkinThickness</label>
-				  <textarea class="form-control" rows="2" id="query4" name="query4" rows="2" cols="8" autofocus>{{query4}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				  <label for="comment">Insulin</label>
-				  <textarea class="form-control" rows="2" id="query5" name="query5" rows="2" cols="8" autofocus>{{query5}}</textarea>
-			</div>
-			<div class="form-group  purple-border">
-				<label for="comment">BMI</label>
-				<textarea class="form-control" rows="2" id="query6" name="query6" rows="2" cols="8" autofocus>{{query6}}</textarea>
-		  	</div>
-			<div class="form-group  purple-border">
-				<label for="comment">DiabetesPedigreeFunction</label>
-				<textarea class="form-control" rows="2" id="query7" name="query7" rows="2" cols="8" autofocus>{{query7}}</textarea>
-		  	</div>
-			  <div class="form-group  purple-border">
-				<label for="comment">Age</label>
-				<textarea class="form-control" rows="2" id="query8" name="query8" rows="2" cols="8" autofocus>{{query9}}</textarea>
-		  	</div>
-			</div>
-			<div class="col-sm-3">
-			<button type="submit" class="btn btn-primary" name="submit">SUBMIT</button>
-			</div>
-		  </form>
-		  </div>
-		  
-		<div class="row"> 
-			<div class="col-sm-9">
-			<textarea class="form-control" rows="2" id="comment" name="output1" rows="2" cols="8" autofocus>{{output1}}</textarea>
-			<textarea class="form-control" rows="2" id="comment" name="output2" rows="2" cols="8" autofocus>{{output2}}</textarea>
-			</div>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Sabyasachi's Diabetes Predcitor</title>
+    <link rel="stylesheet" href="static/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="static/css/Header-Dark.css">
+    <link rel="stylesheet" href="static/css/styles.css">
+</head>
+
+<body>
+    <header class="header-dark">
+        <nav class="navbar navbar-dark navbar-expand-lg navigation-clean-search">
+            <div class="container"><a class="navbar-brand" href="index.html">Sabyasachi's Diabetes Predictor</a></div>
+        </nav>
+        <h1 class="display-4 text-center text-white">Are You Diabetic?</h1>
+    <form action="http://localhost:5000" method="POST">
+        <div class="input-group text-center"><span class="text-center text-dark input-group-text">Pregnancies</span><input name="query1" id='query1' required class="form-control" type="number" min="0" max="10" step="1" placeholder="Enter the Number of Pregnancies" style="text-align: center;"></div>
+        <div class="input-group"><span class="input-group-text">Glucose</span><input name="query2" id='query2' required class="form-control" type="text" placeholder="Enter the Glucose Concentration in mm/dl" inputmode="numeric" style="text-align: center;"></div>
+        <div class="input-group"><span class="input-group-text">Blood Pressure</span><input name="query3" id='query3' required class="form-control" type="text" placeholder="Enter the Blood Pressure in mm/Hg" inputmode="numeric" style="text-align: center;"></div>
+        <div class="input-group"><span class="input-group-text">Skin Thickness</span><input name="query4" id='query4' required class="form-control" type="text" placeholder="Enter the Skin Thickness in mm" inputmode="numeric" style="text-align: center;"></div>
+        <div class="input-group"><span class="input-group-text">Insulin</span><input name="query5" id='query5' required class="form-control" type="text" placeholder="Enter the Insulin Concentration in IU" inputmode="numeric" style="text-align: center;"></div>
+        <div class="input-group"><span class="input-group-text">BMI</span><input name="query6" id='query6' required class="form-control" type="text" placeholder="Enter the Basal Metabolic Rate" inputmode="numeric" style="text-align: center;"></div>
+        <div class="input-group"><span class="input-group-text">Pedigree</span><input name="query7" id='query7' required class="form-control" type="text" placeholder="Enter the Diabetes Pedigree Function " inputmode="numeric" style="text-align: center;"></div>
+        <div class="input-group"><span class="input-group-text">Age</span><input name="query8" id='query8' required class="form-control" type="text" placeholder="Enter the Age" inputmode="numeric" style="text-align: center;"></div>
+        <div class="input-group"></div>
+        <button class="btn btn-primary text-center" type="submit" name="submit">SUBMIT</button>
+        <div class="input-group"></div>
+    </form>
+        <!--<div class="input-group"><input class="form-control" id="comment" name="output1" type="text" placeholder="Are you Diabetic?" style="text-align: center;">{{output1}}</div>
+        <div class="input-group"><input class="form-control" id="comment" name="output2" type="text" placeholder="How much Sure are We?" style="text-align: center;">{{output2}}</div>-->
+        <div class="input-group-text">
+			<textarea class="form-control-lg" style="min-width: 100%; text-align: center;" placeholder="Are You Diabetic?" name="output1">{{output1}}</textarea>
 		</div>
-	</div>		
-   </body>
+        <div class="input-group-text">
+            <textarea class="form-control-lg" style="min-width: 100%; text-align: center;" placeholder="Confidence Percentage" name="output2">{{output2}}</textarea>
+		</div>
+    </header>
+    <script src="static/bootstrap/js/bootstrap.min.js"></script>
+</body>
+
 </html>
