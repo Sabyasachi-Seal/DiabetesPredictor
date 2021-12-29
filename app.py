@@ -1,13 +1,5 @@
-
-# coding: utf-8
-
 import pandas as pd
-from sklearn.model_selection import train_test_split
-from sklearn.ensemble import RandomForestClassifier 
-from sklearn import metrics
 from flask import Flask, request, render_template
-import re
-import math
 import pickle
 
 app = Flask("__name__")
@@ -31,19 +23,21 @@ def diabetesPrediction():
     inputQuery7 = request.form['query7']
     inputQuery8 = request.form['query8']
 
-    inputdata = [[inputQuery1, inputQuery2, inputQuery3, inputQuery4, inputQuery5, inputQuery6, inputQuery7, inputQuery8]]
+    inputted = [[inputQuery1, inputQuery2, inputQuery3, inputQuery4, inputQuery5, inputQuery6, inputQuery7, inputQuery8]]
 
-    filename = "model.sav"
+    X_pred = pd.DataFrame(inputted, columns=['Pregnancies', 'Glucose', 'BloodPressure','SkinThickness','Insulin','BMI','DiabetesPedigreeFunction','Age'])
 
-    mlmodel = pickle.load(open(filename, "rb"))
+    savename = "model.sav"
 
-    single = mlmodel.classifier(inputdata)[0]
+    load_model = pickle.load(open(savename, "rb"))
 
-    probability = mlmodel.predict_proba(inputdata)[:,1][0]
+    single = load_model.predict(X_pred)[0]
+
+    probability = load_model.predict_proba(X_pred)[:,1][0]*100
 
     if single==1:
         output = "The patient is diagnosed with Diabetes"
-        output1 = "Confidence: {}".format(probability*100)
+        output1 = "Confidence: {}".format(probability)
     else:
         output = "The patient is not diagnosed with Diabetes"
         output1 = ""
